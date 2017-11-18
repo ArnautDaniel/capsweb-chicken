@@ -1,8 +1,5 @@
 (use srfi-18 spiffy intarweb uri-common spiffy-cookies html-tags uri-match spiffy-uri-match sxml-serializer spiffy-directory-listing sql-de-lite json)
 
-(define css-dir '())
-
-(define css-list '("bulma.css"))
 
 ;;;Model
 
@@ -47,7 +44,7 @@
 		   (@ (height "300"))
 		   (@ (width "300"))))
 	  (h2 (@ (class "subtitle"))
-	      "Serving the Atlanta Food Industry"))))
+	      "Serving the Atlanta Film Industry"))))
       ,body-code))))
 
 ;;;Very destructive function
@@ -86,10 +83,7 @@
 	(@ (class "columns"))
 	(div
 	 (@ (class "column is-5 is-offset-2"))
-	 (form
-	  (@ (action "/check-search")) 
-	  (@ (method "get"))
-	  (div
+	 (div
 	   (@ (class "field has-addons"))
 	   (div
 	    (@ (class "control"))
@@ -97,7 +91,10 @@
 	     (@ (class "input"))
 	     (@ (id "searchbar"))
 	     (@ (type "text"))
-	     (@ (placeholder "Search"))))))))
+	     (@ (placeholder "Search"))))
+	   (button (@ (class "button is-success"))
+		   (@ (id "addshowbtn"))
+		   "Add"))))
        (div
 	(@ (class "columns"))
 	(div (@ (class "column is-5 is-offset-2"))
@@ -219,6 +216,37 @@
 	       "<p>Ghost Doggo is looking for your page.</p>
 <img src='404.jpg'>"))
 
+;;;Alot of work needed
+(define (call-db-with-param qur table rows-to limiter search-parm)
+  (call-with-database "devel.db"
+		      (lambda (db)
+			(fetch-all
+			 (prepare db
+				  (format "SELECT ~a from ~a ~a ~a '~a' LIMIT 30;" rows-to table limiter search-parm qur))))))
+
+
+(define (general-js-query)
+  (let* ((uri (request-uri (current-request)))
+	 (uri-q (uri-query uri)))
+    (if (null? uri-q)
+	(send-status 404 "Bad Query Capt")
+	(let*
+	    ((qur (cdr (assoc 'name uri-q)))
+	     (rows-to (cdr (assoc 'rows uri-q)))
+	     (table (cdr (assoc 'table uri-q)))
+	     (limiter (cdr (assoc 'limiter uri-q)))
+	     (search-parm "name like")
+	     (result (call-db-with-param qur table rows-to limiter search-parm)))
+	  (with-headers `((connection close))
+			(lambda ()
+			  (write-logged-response)))
+	  (json-write (map (lambda (x)
+			     (second x))
+			   result)
+		      (response-port (current-response)))))))
+
+(set! *global-alist* (cons (list "/general-js-query" general-js-query) *global-alist*))
+
 ;;;AJAX function;  Works!
 ;;;Tested with 50,000k rows!
 (define (send-js-search)
@@ -230,11 +258,11 @@
 	 body: "Couldn't find")
         (let*
 	    ((qur (cdr (assoc 'name uri-q)))
-	     (result (call-with-database "animals.db"
+	     (result (call-with-database "devel.db"
 					 (lambda (db)
 					   (fetch-all
 					    (prepare db
-						     (format "SELECT * from genre where name LIKE \'%~a%\' LIMIT 30;" qur)))))))
+						     (format "SELECT * from shows where name LIKE \'%~a%\' LIMIT 30;" qur)))))))
 	  (with-headers `((connection close))
 			(lambda ()
 			  (write-logged-response)))
