@@ -26,7 +26,7 @@ window.onload = function (){
 		    child.parentNode.removeChild(child);
 		    
 		} 
-		    var table = document.createElement("table");
+		var table = document.createElement("table");
 		table.id = 'jsonTable';
 		table.className = 'table is-striped is-hoverable';
      

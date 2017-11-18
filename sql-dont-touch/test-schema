@@ -1,0 +1,29 @@
+CREATE TABLE "items" (
+    "itemid" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "description" TEXT,
+    "price" REAL,
+    "qty" INTEGER,
+    "show" TEXT,
+    "setname" TEXT,
+    "date-rented" TEXT,
+    "full-return?" TEXT
+);
+CREATE TABLE sqlite_sequence(name,seq);
+CREATE TABLE pictable(
+	picid INTEGER PRIMARY KEY,
+	itempicid INTEGER,
+	picpath TEXT, 
+	setname TEXT,
+	checkedindate TEXT,
+	fullychecked TEXT,
+	FOREIGN KEY(itempicid) REFERENCES items(itemid)
+);
+CREATE TABLE returntable(
+	returnid INTEGER PRIMARY KEY AUTOINCREMENT,
+	itemreturnid INTEGER,
+	datereturned TEXT,
+	quantityreturned INTEGER,
+	FOREIGN KEY (itemreturnid) REFERENCES items(itemid)
+	
+	
+);

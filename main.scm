@@ -20,6 +20,13 @@
      (head (title ,title-name)
 	   (link (@ (rel "stylesheet"))
 		 (@ (type "text/css"))
+		 (@ (href "css/iziToast.css")))
+	   (script
+	    (@ (src "js/iziToast.js"))
+	    (@ (type "text/javascript")))
+	   
+	   (link (@ (rel "stylesheet"))
+		 (@ (type "text/css"))
 		 (@ (href "css/bulma.css")))
 	   (link (@ (rel "icon"))
 		 (@ (type "image/jpg"))
@@ -28,7 +35,20 @@
 		 (@ (name "viewport"))
 		 (@ (content
 		     "width=device-width, initial-scale=1 maximum-scale=1"))))
-     (body ,body-code))))
+     (body
+      (section
+	(@ (class "hero is-caps"))
+	(div
+	 (@ (class "hero-body"))
+	 (div
+	  (@ (class "container"))
+	  (h1 (@ (class "title"))
+	      (img (@ (src "caps-logo.jpg"))
+		   (@ (height "300"))
+		   (@ (width "300"))))
+	  (h2 (@ (class "subtitle"))
+	      "Serving the Atlanta Food Industry"))))
+      ,body-code))))
 
 ;;;Very destructive function
 ;;;Where page logic is a quasiquoted list
@@ -54,23 +74,12 @@
 
 	    				;--------------------------------------------
 
+;;;Destroys itself after compiling...isn't that odd.
 (define search-bar
   (lambda ()
     (make-page!
      "/search" "Search"
-     `((section
-	(@ (class "hero is-caps"))
-	(div
-	 (@ (class "hero-body"))
-	 (div
-	  (@ (class "container"))
-	  (h1 (@ (class "title"))
-	      (img (@ (src "caps-logo.jpg"))
-		   (@ (height "300"))
-		   (@ (width "300"))))
-	  (h2 (@ (class "subtitle"))
-	      "Serving the Atlanta Food Industry"))))
-       (br)
+     `((br)
        (script (@ (src "/searchbar.js"))
 	       (@ (type "text/javascript")))
        (div
@@ -97,6 +106,45 @@
     
     (redirect-to (uri-reference "/search"))))
 
+(define new-show-page
+  (lambda ()
+    (make-page!
+     "/new-show" "Add new show"
+     `((br)
+       (script
+	(@ (src "/add-show.js"))
+	(@ (type "text/javascript")))
+       (div
+	(@ (class "columns"))
+	(div
+	 (@ (class "column is-5 is-offset-2"))
+	  (div
+	   (@ (class "field"))
+	   (label
+	    (@ (class "label"))
+	    "Show")
+	   (div
+	    (@ (class "control"))
+	    (input
+	     (@ (class "input"))
+	     (@ (value ""))
+	     (@ (id "addshowinput"))
+	     (@ (type "text"))
+	     (@ (placeholder "New Show"))))
+	   (p
+	    (@ (class "help"))
+	    "Add a new show to the system!")
+	   (div
+	    (@ (class "field"))
+	    (p
+	     (@ (class "control"))
+	    (button
+	     (@ (class "button is-success"))
+	     (@ (id "addshowbtn"))
+	     "Add"))))))))
+	   
+     (redirect-to (uri-reference "/new-show"))))
+;;;Rewrite as make-page ---------->
 (define main-caps
   (lambda ()
     (send-sxml-response
@@ -121,6 +169,10 @@
   (lambda ()
     (send-response
      body: "Shoo shoo cookie monster!")))
+
+;;;<--------------------------------
+
+
 ;;;Router
 ;;;This is a very simple router that takes
 ;;;the uri path and looks it up in the *global-alist*
@@ -167,6 +219,8 @@
 	       "<p>Ghost Doggo is looking for your page.</p>
 <img src='404.jpg'>"))
 
+;;;AJAX function;  Works!
+;;;Tested with 50,000k rows!
 (define (send-js-search)
   (let* ((uri (request-uri (current-request)))
 	(uri-q (uri-query uri)))
@@ -180,7 +234,7 @@
 					 (lambda (db)
 					   (fetch-all
 					    (prepare db
-						     (format "SELECT * from genre where name LIKE \'%~a%\' ;" qur)))))))
+						     (format "SELECT * from genre where name LIKE \'%~a%\' LIMIT 30;" qur)))))))
 	  (with-headers `((connection close))
 			(lambda ()
 			  (write-logged-response)))
@@ -189,18 +243,33 @@
 			 (second x))
 		       result)
 		  (response-port (current-response)))))))
-	  
+
+;;;Need a function for pushing server util uri's to the global-alist
 (set! *global-alist* (cons (list "/searchjs" send-js-search) *global-alist*))  
-	  
-(define (send-sxml-response sxml)
-  (with-headers `((connection close))
-                (lambda ()
-                  (write-logged-response)))
-  (serialize-sxml sxml
-		  method: 'xml
-                  output: (response-port (current-response))))
 
+(define (addshowjs)
+  (let* ((uri (request-uri (current-request)))
+	 (uri-q (uri-query uri)))
+    (if (null? uri-q)
+	(send-response code: '404
+		       body: "Nope")
+	(let* ((qur (cdr (assoc 'name uri-q)))
+	       (result (call-with-database "devel.db"
+					   (lambda (db)
+					     (fetch-all
+					      (prepare db (format "SELECT * from shows  where name='~a' LIMIT 10;" qur)))))))
+	  (cond ((null? result)
+		 (and
+		  (call-with-database "devel.db"
+				      (lambda (db)
+					(exec (sql db "INSERT INTO shows(name) values(?);") qur)))
+		  (send-status 200 "" "")))
+		(else 
+		(send-response code: '404
+				body: "Nope!")))))))
 
+(set! *global-alist* (cons (list "/addshowjs" addshowjs) *global-alist*))
+			      
 
 (handle-directory spiffy-directory-listing)
 
@@ -216,4 +285,3 @@
      (vhost-map `((".*" . ,(lambda (c) (router)))))
      (start-server port: 8000))))
 
-(thread-join! thread)
