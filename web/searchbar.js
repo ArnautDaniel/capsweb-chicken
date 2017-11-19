@@ -1,10 +1,13 @@
 window.onload = function (){
     var httpR;
     var httpL;
-    document.getElementById('searchbar').addEventListener('input', makeRequest);
-    document.getElementById('addshowbtn').addEventListener('click', showRequest);
+    var jsb = function(){
+	makeRequest("name", "show");};
+    document.getElementById('searchbar').addEventListener('input', jsb,  false);
+    document.getElementById('addshowbtn').addEventListener('click', showCreate);
     
-    function showRequest () {
+
+    function showCreate () {
 	httpL = new XMLHttpRequest();
 	if (!httpL) {
 	    alert('Giving up :(');
@@ -38,7 +41,7 @@ window.onload = function (){
 	    
 
     
-    function makeRequest () {
+    function makeRequest (item, type) {
 	
 	httpR = new XMLHttpRequest();
 	
@@ -47,18 +50,24 @@ window.onload = function (){
 	    return false;
 	}
 	httpR.onreadystatechange = alertContents;
-	httpR.open('POST', "/searchjs?name=" + document.getElementById('searchbar').value);
+	httpR.open('POST', "/general-js-query?" + item + "=" + document.getElementById('searchbar').value
+		   + "&query=" + type);
+		   
 	httpR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	httpR.send("name=steve")
+	httpR.send("showname=steve")
     }
     
     
     function tableJS (e) {
 	console.log(this.textContent);
+	var idl = this.id
 	var child = document.getElementById("jsonTable")
 	child.parentNode.removeChild(child);
-	document.getElementById('searchbar').removeEventListener('input', makeRequest);
-	document.getElementById('searchbar').addEventListener('input', makeRequest);
+	document.getElementById('searchbar').removeEventListener('input', jsb);
+	jsb = function () {
+	    makeRequest("name", "set&id=" + idl);
+	};
+	document.getElementById('searchbar').addEventListener('input', jsb);
     }
     function alertContents (){
 	if (httpR.readyState === XMLHttpRequest.DONE){
@@ -79,7 +88,8 @@ window.onload = function (){
 		    var row = table.insertRow(-1);
 		    var dataCell  = row.insertCell(-1);
 		    dataCell.onclick = tableJS;
-		    dataCell.appendChild(document.createTextNode(jsonData[i]));
+		    dataCell.id = jsonData[i][0];
+		    dataCell.appendChild(document.createTextNode(jsonData[i][1]));
 		}
 		document.getElementById("jsonTableDiv").appendChild(table);
 

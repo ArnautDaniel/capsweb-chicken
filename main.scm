@@ -34,17 +34,17 @@
 		     "width=device-width, initial-scale=1 maximum-scale=1"))))
      (body
       (section
-	(@ (class "hero is-caps"))
+       (@ (class "hero is-caps"))
+       (div
+	(@ (class "hero-body"))
 	(div
-	 (@ (class "hero-body"))
-	 (div
-	  (@ (class "container"))
-	  (h1 (@ (class "title"))
-	      (img (@ (src "caps-logo.jpg"))
-		   (@ (height "300"))
-		   (@ (width "300"))))
-	  (h2 (@ (class "subtitle"))
-	      "Serving the Atlanta Film Industry"))))
+	 (@ (class "container"))
+	 (h1 (@ (class "title"))
+	     (img (@ (src "caps-logo.jpg"))
+		  (@ (height "300"))
+		  (@ (width "300"))))
+	 (h2 (@ (class "subtitle"))
+	     "Serving the Atlanta Film Industry"))))
       ,body-code))))
 
 ;;;Very destructive function
@@ -53,23 +53,18 @@
 (define (make-page! route title page-logic)
   (set! *global-alist* (alist-delete! route *global-alist*))
   (set! *global-alist*
-    (cons (list route
-		(lambda ()
-		  (standard-header title page-logic))) *global-alist*)))
+	(cons (list route
+		    (lambda ()
+		      (standard-header title page-logic))) *global-alist*)))
 
-					;-------------------------------------
+(define (make-ajax-page! route func)
+  (set! *global-alist* (alist-delete! route *global-alist*))
+  (set! *global-alist*
+	(cons (list route func) *global-alist*)))
 
-
-(define *global-alist* '(("/" main-caps)
-			 ("/main/caps" main-caps)
-			 ("/set-cookie" cookie-auth)
-			 ("/badcookie" bad-cookie)
-			 ("/cookie-page" cookie-page)
-			 ("/test" tester-page)
-			 ("/search" search-bar)))
+(define *global-alist* '(("/search" search-bar)))
 
 
-	    				;--------------------------------------------
 
 ;;;Destroys itself after compiling...isn't that odd.
 (define search-bar
@@ -84,91 +79,24 @@
 	(div
 	 (@ (class "column is-5 is-offset-2"))
 	 (div
-	   (@ (class "field has-addons"))
-	   (div
-	    (@ (class "control"))
-	    (input
-	     (@ (class "input"))
-	     (@ (id "searchbar"))
-	     (@ (type "text"))
-	     (@ (placeholder "Search"))))
-	   (button (@ (class "button is-success"))
-		   (@ (id "addshowbtn"))
-		   "Add"))))
+	  (@ (class "field has-addons"))
+	  (div
+	   (@ (class "control"))
+	   (input
+	    (@ (class "input"))
+	    (@ (id "searchbar"))
+	    (@ (type "text"))
+	    (@ (placeholder "Search"))))
+	  (button (@ (class "button is-success"))
+		  (@ (id "addshowbtn"))
+		  "Add"))))
        (div
 	(@ (class "columns"))
 	(div (@ (class "column is-5 is-offset-2"))
 	     (@ (id "jsonTableDiv"))))))
-	   
+    
     
     (redirect-to (uri-reference "/search"))))
-
-(define new-show-page
-  (lambda ()
-    (make-page!
-     "/new-show" "Add new show"
-     `((br)
-       (script
-	(@ (src "/add-show.js"))
-	(@ (type "text/javascript")))
-       (div
-	(@ (class "columns"))
-	(div
-	 (@ (class "column is-5 is-offset-2"))
-	  (div
-	   (@ (class "field"))
-	   (label
-	    (@ (class "label"))
-	    "Show")
-	   (div
-	    (@ (class "control"))
-	    (input
-	     (@ (class "input"))
-	     (@ (value ""))
-	     (@ (id "addshowinput"))
-	     (@ (type "text"))
-	     (@ (placeholder "New Show"))))
-	   (p
-	    (@ (class "help"))
-	    "Add a new show to the system!")
-	   (div
-	    (@ (class "field"))
-	    (p
-	     (@ (class "control"))
-	    (button
-	     (@ (class "button is-success"))
-	     (@ (id "addshowbtn"))
-	     "Add"))))))))
-	   
-     (redirect-to (uri-reference "/new-show"))))
-;;;Rewrite as make-page ---------->
-(define main-caps
-  (lambda ()
-    (send-sxml-response
-     (map (lambda (x)
-	    `(a (@ (href ,(car x)))
-		,(car x) (br)))
-	  *global-alist*))))
-
-(define cookie-auth
-  (lambda ()
-    (set-cookie! "auth" "password")
-    (redirect-to (uri-reference "/cookie-page"))))
-
-(define cookie-page
-  (lambda ()
-    (if (read-cookie "auth")
-	(send-response
-	 body: "You got cookies! Where's the milk?")
-	(redirect-to (uri-reference "/badcookie")))))
-
-(define bad-cookie
-  (lambda ()
-    (send-response
-     body: "Shoo shoo cookie monster!")))
-
-;;;<--------------------------------
-
 
 ;;;Router
 ;;;This is a very simple router that takes
@@ -216,64 +144,75 @@
 	       "<p>Ghost Doggo is looking for your page.</p>
 <img src='404.jpg'>"))
 
-;;;Alot of work needed
-(define (call-db-with-param qur table rows-to limiter search-parm)
+
+
+;;; General querying through AJAX
+(define (call-db-with-param quer qur)
   (call-with-database "devel.db"
 		      (lambda (db)
-			(fetch-all
+			(fetch-alists
 			 (prepare db
-				  (format "SELECT ~a from ~a ~a ~a '~a' LIMIT 30;" rows-to table limiter search-parm qur))))))
+				  (format "~a '~a' LIMIT 30;" quer qur))))))
 
+(define (ajax-response data-list)
+  ( with-headers `((connection close))
+		 (lambda ()
+		   (write-logged-response)))
+  (json-write data-list
+	      (response-port (current-response))))
+
+(define (query-show query item)
+  (let*
+      ((item-val (cdr (assoc query item)))
+       (result (call-db-with-param "SELECT * from shows WHERE name like "
+			   (string-append "%" item-val "%"))))
+    (ajax-response
+     (map (lambda (x)
+	    (list (cdr (assoc 'showid x))
+		  (cdr (assoc query x))))
+	  result))))
+	  
+
+(define (query-id query item)
+  (let ((item-val (cdr (assoc query item))))
+    (call-db-with-param "SELECT * from shows where showid="
+			item-val)))
+
+(define (query-set query item)
+  (let*
+      ((constraint (cdr (assoc 'id item)))
+       (item-val (cdr (assoc query item))))
+    (if constraint
+	(call-db-with-param
+	 (string-append "SELECT * from sets WHERE showid=" constraint " AND name like ")
+	 (string-append "%" item-val "%"))
+	(call-db-with-param
+	 "SELECT * from sets WHERE name like "
+	(string-append "%" item "%")))))
+		      
+(define (general-query func query item)
+  (ajax-response
+   (map (lambda (x)
+	  (cdr (assoc query x)))
+	(func query item))))
 
 (define (general-js-query)
   (let* ((uri (request-uri (current-request)))
 	 (uri-q (uri-query uri)))
-    (if (null? uri-q)
-	(send-status 404 "Bad Query Capt")
-	(let*
-	    ((qur (cdr (assoc 'name uri-q)))
-	     (rows-to (cdr (assoc 'rows uri-q)))
-	     (table (cdr (assoc 'table uri-q)))
-	     (limiter (cdr (assoc 'limiter uri-q)))
-	     (search-parm "name like")
-	     (result (call-db-with-param qur table rows-to limiter search-parm)))
-	  (with-headers `((connection close))
-			(lambda ()
-			  (write-logged-response)))
-	  (json-write (map (lambda (x)
-			     (second x))
-			   result)
-		      (response-port (current-response)))))))
+    (cond
+     ((equal? (cdr (assoc 'query uri-q)) "show")
+      (query-show 'name uri-q))
+     ((equal? (cdr (assoc 'query uri-q)) "set")
+      (general-query query-set 'name uri-q))
+     ((equal? (cdr (assoc 'id uri-q)) "id")
+      (general-query query-id 'id uri-q))
+     (else
+      (send-fof-response)))))
 
-(set! *global-alist* (cons (list "/general-js-query" general-js-query) *global-alist*))
-
+(make-ajax-page! "/general-js-query" general-js-query)     
 ;;;AJAX function;  Works!
 ;;;Tested with 50,000k rows!
-(define (send-js-search)
-  (let* ((uri (request-uri (current-request)))
-	(uri-q (uri-query uri)))
-    (if (null? uri-q)
-	(send-response
-	 status: 'ok
-	 body: "Couldn't find")
-        (let*
-	    ((qur (cdr (assoc 'name uri-q)))
-	     (result (call-with-database "devel.db"
-					 (lambda (db)
-					   (fetch-all
-					    (prepare db
-						     (format "SELECT * from shows where name LIKE \'%~a%\' LIMIT 30;" qur)))))))
-	  (with-headers `((connection close))
-			(lambda ()
-			  (write-logged-response)))
-	  (json-write
-		  (map (lambda (x)
-			 (second x))
-		       result)
-		  (response-port (current-response)))))))
-
 ;;;Need a function for pushing server util uri's to the global-alist
-(set! *global-alist* (cons (list "/searchjs" send-js-search) *global-alist*))  
 
 (define (addshowjs)
   (let* ((uri (request-uri (current-request)))
@@ -293,11 +232,10 @@
 					(exec (sql db "INSERT INTO shows(name) values(?);") qur)))
 		  (send-status 200 "" "")))
 		(else 
-		(send-response code: '404
+		 (send-response code: '404
 				body: "Nope!")))))))
 
-(set! *global-alist* (cons (list "/addshowjs" addshowjs) *global-alist*))
-			      
+(make-ajax-page! "/addshowjs" addshowjs)
 
 (handle-directory spiffy-directory-listing)
 
