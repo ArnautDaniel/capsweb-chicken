@@ -1,0 +1,120 @@
+[Mon Nov 20 23:28:06 2017] "POST http://localhost:8000/general-js-query?constraint=like-name-d&preamble=select-items HTTP/1.1" Error: (prepare)
+no such column: name
+"select * from items where name like'%d%' "
+
+	Call history:
+
+	sql-de-lite.scm:926: make-composite-condition	  
+	sql-de-lite.scm:925: abort	  
+	sql-de-lite.scm:898: k2138	  
+	sql-de-lite.scm:898: g2142	  
+	sql-de-lite.scm:900: close-database	  
+	sql-de-lite.scm:878: sql-de-lite-cache#lru-cache-flush!	  
+	sql-de-lite.scm:879: for-each-active-statement	  
+	sql-de-lite.scm:190: hash-table-walk	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:883: object-release	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:902: abort	  
+	spiffy.scm:505: k736	  
+	spiffy.scm:505: g740	  
+	spiffy.scm:507: handle-exception	  
+	spiffy.scm:508: with-output-to-string	  	<--
+
+
+[Mon Nov 20 23:32:23 2017] "POST http://localhost:8000/general-js-query?constraint=like-name-%27&preamble=select-shows HTTP/1.1" Error: (prepare)
+unrecognized token: "' "
+"select * from shows where name like'%'%' "
+
+	Call history:
+
+	sql-de-lite.scm:926: make-composite-condition	  
+	sql-de-lite.scm:925: abort	  
+	sql-de-lite.scm:898: k2138	  
+	sql-de-lite.scm:898: g2142	  
+	sql-de-lite.scm:900: close-database	  
+	sql-de-lite.scm:878: sql-de-lite-cache#lru-cache-flush!	  
+	sql-de-lite.scm:879: for-each-active-statement	  
+	sql-de-lite.scm:190: hash-table-walk	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:883: object-release	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:902: abort	  
+	spiffy.scm:505: k736	  
+	spiffy.scm:505: g740	  
+	spiffy.scm:507: handle-exception	  
+	spiffy.scm:508: with-output-to-string	  	<--
+
+
+[Mon Nov 20 23:32:27 2017] "POST http://localhost:8000/general-js-query?constraint=like-name-%27&preamble=select-shows HTTP/1.1" Error: (prepare)
+unrecognized token: "' "
+"select * from shows where name like'%'%' "
+
+	Call history:
+
+	sql-de-lite.scm:926: make-composite-condition	  
+	sql-de-lite.scm:925: abort	  
+	sql-de-lite.scm:898: k2138	  
+	sql-de-lite.scm:898: g2142	  
+	sql-de-lite.scm:900: close-database	  
+	sql-de-lite.scm:878: sql-de-lite-cache#lru-cache-flush!	  
+	sql-de-lite.scm:879: for-each-active-statement	  
+	sql-de-lite.scm:190: hash-table-walk	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:883: object-release	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:902: abort	  
+	spiffy.scm:505: k736	  
+	spiffy.scm:505: g740	  
+	spiffy.scm:507: handle-exception	  
+	spiffy.scm:508: with-output-to-string	  	<--
+
+
+[Mon Nov 20 23:32:48 2017] "POST http://localhost:8000/general-js-query?constraint=like-name-Jack%27&preamble=select-shows HTTP/1.1" Error: (prepare)
+unrecognized token: "' "
+"select * from shows where name like'%Jack'%' "
+
+	Call history:
+
+	sql-de-lite.scm:926: make-composite-condition	  
+	sql-de-lite.scm:925: abort	  
+	sql-de-lite.scm:898: k2138	  
+	sql-de-lite.scm:898: g2142	  
+	sql-de-lite.scm:900: close-database	  
+	sql-de-lite.scm:878: sql-de-lite-cache#lru-cache-flush!	  
+	sql-de-lite.scm:879: for-each-active-statement	  
+	sql-de-lite.scm:190: hash-table-walk	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:883: object-release	  
+	sql-de-lite.scm:160: ##sys#block-set!	  
+	sql-de-lite.scm:902: abort	  
+	spiffy.scm:505: k736	  
+	spiffy.scm:505: g740	  
+	spiffy.scm:507: handle-exception	  
+	spiffy.scm:508: with-output-to-string	  	<--
+
+
+[Tue Nov 21 01:23:07 2017] "GET http://localhost:8000/generate-html HTTP/1.1" Error: (car)
+bad argument type
+"/generate-html"
+
+	Call history:
+
+	<eval>	  [make-uri-string] (string-append (symbol->string (car p-uri)) (make-uri-string (cdr p-uri)))
+	<eval>	  [make-uri-string] (symbol->string (car p-uri))
+	<eval>	  [make-uri-string] (car p-uri)
+	<eval>	  [make-uri-string] (make-uri-string (cdr p-uri))
+	<eval>	  [make-uri-string] (cdr p-uri)
+	<eval>	  [make-uri-string] (null? p-uri)
+	<eval>	  [make-uri-string] (symbol? (car p-uri))
+	<eval>	  [make-uri-string] (car p-uri)
+	<eval>	  [make-uri-string] (null? (cdr p-uri))
+	<eval>	  [make-uri-string] (cdr p-uri)
+	<eval>	  [make-uri-string] (car p-uri)
+	<eval>	  [choose-route] (assoc n-uri *global-alist*)
+	spiffy.scm:505: k736	  
+	spiffy.scm:505: g740	  
+	spiffy.scm:507: handle-exception	  
+	spiffy.scm:508: with-output-to-string	  	<--
+
+
