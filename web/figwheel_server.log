@@ -1,0 +1,388 @@
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.386 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.373 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.335 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.337 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.348 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:10  column:4  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/state-ful-with-atom[0m
+
+  [36m 6[0m  [36m;; Views[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(defn home-page [][0m
+  [36m 9[0m  [36m  [:div [:h2 "Welcome to Reagent"][0m
+  [33m10[0m  [1m  (state-ful-with-atom)])[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var capsweb-frontend.core/state-ful-with-atom[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(defonce click-count (r/atom 0))[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn state-ful-with-atom [][0m
+  [36m15[0m  [36m  [:div {:on-click #(swap! click-count inc)}[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.344 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:10  column:3  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/state-ful-with-atom[0m
+
+  [36m 6[0m  [36m;; Views[0m
+  [36m 7[0m  [36m[0m
+  [36m 8[0m  [36m(defn home-page [][0m
+  [36m 9[0m  [36m  [:div [:h2 "Welcome to Reagent"][0m
+  [33m10[0m  [1m  state-ful-with-atom])[0m
+  [0m  [0m  [33m  ^--- Use of undeclared Var capsweb-frontend.core/state-ful-with-atom[0m
+  [36m11[0m  [36m[0m
+  [36m12[0m  [36m(defonce click-count (r/atom 0))[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn state-ful-with-atom [][0m
+  [36m15[0m  [36m  [:div {:on-click #(swap! click-count inc)}[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.373 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.32 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.356 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.401 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.322 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.33 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.301 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:26  column:14  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/time-component[0m
+
+  [36m22[0m  [36m;; -------------------------[0m
+  [36m23[0m  [36m;; Initialize app[0m
+  [36m24[0m  [36m[0m
+  [36m25[0m  [36m(defn mount-root [][0m
+  [33m26[0m  [1m  (r/render [time-component] [state-ful-with-atom] (.getElementById js/document "app")))[0m
+  [0m  [0m  [33m             ^--- Use of undeclared Var capsweb-frontend.core/time-component[0m
+  [36m27[0m  [36m[0m
+  [36m28[0m  [36m(defn init! [][0m
+  [36m29[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.388 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.324 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.322 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.343 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:20  column:2  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/go[0m
+
+  [36m16[0m  [36m       [:p "The value is now: " @val][0m
+  [36m17[0m  [36m       [:p "Change it here: " [atom-input val]]])))[0m
+  [36m18[0m  [36m[0m
+  [36m19[0m  [36m[0m
+  [33m20[0m  [1m(go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [0m  [0m  [33m ^--- Use of undeclared Var capsweb-frontend.core/go[0m
+  [36m21[0m  [36m      (prn (:status response))[0m
+  [36m22[0m  [36m      (prn (:body response))))[0m
+  [36m23[0m  [36m;; -------------------------[0m
+  [36m24[0m  [36m;; Initialize app[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:20  column:21  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/<![0m
+
+  [36m16[0m  [36m       [:p "The value is now: " @val][0m
+  [36m17[0m  [36m       [:p "Change it here: " [atom-input val]]])))[0m
+  [36m18[0m  [36m[0m
+  [36m19[0m  [36m[0m
+  [33m20[0m  [1m(go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [0m  [0m  [33m                    ^--- Use of undeclared Var capsweb-frontend.core/<![0m
+  [36m21[0m  [36m      (prn (:status response))[0m
+  [36m22[0m  [36m      (prn (:body response))))[0m
+  [36m23[0m  [36m;; -------------------------[0m
+  [36m24[0m  [36m;; Initialize app[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:20  column:25  ----[0m
+
+  [1mNo such namespace: http, could not locate http.cljs, http.cljc, or JavaScript source providing "http"[0m
+
+  [36m16[0m  [36m       [:p "The value is now: " @val][0m
+  [36m17[0m  [36m       [:p "Change it here: " [atom-input val]]])))[0m
+  [36m18[0m  [36m[0m
+  [36m19[0m  [36m[0m
+  [33m20[0m  [1m(go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [0m  [0m  [33m                        ^--- No such namespace: http, could not locate http.cljs, http.cljc, or JavaScript source providing "http"[0m
+  [36m21[0m  [36m      (prn (:status response))[0m
+  [36m22[0m  [36m      (prn (:body response))))[0m
+  [36m23[0m  [36m;; -------------------------[0m
+  [36m24[0m  [36m;; Initialize app[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:20  column:25  ----[0m
+
+  [1mUse of undeclared Var http/get[0m
+
+  [36m16[0m  [36m       [:p "The value is now: " @val][0m
+  [36m17[0m  [36m       [:p "Change it here: " [atom-input val]]])))[0m
+  [36m18[0m  [36m[0m
+  [36m19[0m  [36m[0m
+  [33m20[0m  [1m(go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [0m  [0m  [33m                        ^--- Use of undeclared Var http/get[0m
+  [36m21[0m  [36m      (prn (:status response))[0m
+  [36m22[0m  [36m      (prn (:body response))))[0m
+  [36m23[0m  [36m;; -------------------------[0m
+  [36m24[0m  [36m;; Initialize app[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.498 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   public/js/out/cognitect/transit.cljs   line:332  column:1  ----[0m
+
+  [1muri? already refers to: cljs.core/uri? being replaced by: cognitect.transit/uri?[0m
+
+  [36m328[0m  [36m  "Construct a URI from a string."[0m
+  [36m329[0m  [36m  [s][0m
+  [36m330[0m  [36m  (ty/uri s))[0m
+  [36m331[0m  [36m[0m
+  [33m332[0m  [1m(defn uri?[0m
+  [0m   [0m  [33m^--- uri? already refers to: cljs.core/uri? being replaced by: cognitect.transit/uri?[0m
+  [36m333[0m  [36m  "Returns true if x is a transit URI value, false otherwise."[0m
+  [36m334[0m  [36m  [x][0m
+  [36m335[0m  [36m  (ty/isURI x))[0m
+  [36m336[0m  [36m[0m
+  [36m337[0m  [36m(defn uuid[0m
+
+[36m----  Compiler Warning : Please see public/js/out/cognitect/transit.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 1.146 seconds.[0m
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.414 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[31mFailed to compile "public/js/app.js" in 0.203 seconds.[0m
+[36m----  Could not Analyze  src/capsweb_frontend/core.cljs   line:22  column:1  ----[0m
+
+  [1mParameter declaration "go" should be a vector[0m
+
+  [33m22[0m  [1m(defn x (go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [0m  [0m  [33m^--- Parameter declaration "go" should be a vector[0m
+  [36m23[0m  [36m      (prn (:status response))[0m
+  [36m24[0m  [36m      (prn (:body response)))))[0m
+  [36m25[0m  [36m;; -------------------------[0m
+
+[36m----  Analysis Error : Please see src/capsweb_frontend/core.cljs  ----[0m
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:22  column:2  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/defvector[0m
+
+  [36m18[0m  [36m       [:p "The value is now: " @val][0m
+  [36m19[0m  [36m       [:p "Change it here: " [atom-input val]]])))[0m
+  [36m20[0m  [36m[0m
+  [36m21[0m  [36m[0m
+  [33m22[0m  [1m(defvector x  (go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [0m  [0m  [33m ^--- Use of undeclared Var capsweb-frontend.core/defvector[0m
+  [36m23[0m  [36m      (prn (:status response))[0m
+  [36m24[0m  [36m      (prn (:body response)))))[0m
+  [36m25[0m  [36m;; -------------------------[0m
+  [36m26[0m  [36m;; Initialize app[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:22  column:12  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/x[0m
+
+  [36m18[0m  [36m       [:p "The value is now: " @val][0m
+  [36m19[0m  [36m       [:p "Change it here: " [atom-input val]]])))[0m
+  [36m20[0m  [36m[0m
+  [36m21[0m  [36m[0m
+  [33m22[0m  [1m(defvector x  (go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [0m  [0m  [33m           ^--- Use of undeclared Var capsweb-frontend.core/x[0m
+  [36m23[0m  [36m      (prn (:status response))[0m
+  [36m24[0m  [36m      (prn (:body response)))))[0m
+  [36m25[0m  [36m;; -------------------------[0m
+  [36m26[0m  [36m;; Initialize app[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.468 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.37 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.387 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:20  column:28  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/ajax-test[0m
+
+  [36m16[0m  [36m    (fn [][0m
+  [36m17[0m  [36m      [:div[0m
+  [36m18[0m  [36m       [:p "The value is now: " @val][0m
+  [36m19[0m  [36m       [:p "Change it here: " [atom-input val]][0m
+  [33m20[0m  [1m       [:button {:on-click ajax-test}]])))[0m
+  [0m  [0m  [33m                           ^--- Use of undeclared Var capsweb-frontend.core/ajax-test[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m(defn ajax-test [][0m
+  [36m23[0m  [36m  (go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [36m24[0m  [36m        (prn (:status response))[0m
+  [36m25[0m  [36m        (prn (:body response)))))[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.442 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/capsweb_frontend/core.cljs   line:20  column:29  ----[0m
+
+  [1mUse of undeclared Var capsweb-frontend.core/ajax-test[0m
+
+  [36m16[0m  [36m    (fn [][0m
+  [36m17[0m  [36m      [:div[0m
+  [36m18[0m  [36m       [:p "The value is now: " @val][0m
+  [36m19[0m  [36m       [:p "Change it here: " [atom-input val]][0m
+  [33m20[0m  [1m       [:button {:on-click [ajax-test]}]])))[0m
+  [0m  [0m  [33m                            ^--- Use of undeclared Var capsweb-frontend.core/ajax-test[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m(defn ajax-test [][0m
+  [36m23[0m  [36m  (go (let [response (<! (http/get "/general-js-query?preamble=select-shows&constraint=like-name-b"))][0m
+  [36m24[0m  [36m        (prn (:status response))[0m
+  [36m25[0m  [36m        (prn (:body response)))))[0m
+
+[36m----  Compiler Warning : Please see src/capsweb_frontend/core.cljs  ----[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.402 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.377 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.383 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.37 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.366 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.367 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.369 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.361 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.361 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.346 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.347 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.499 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[31mFailed to compile "public/js/app.js" in 0.249 seconds.[0m
+[36m----  Could not Read  src/capsweb_frontend/core.cljs   line:16 ----[0m
+
+  [1m/home/silver/capsweb-chicken/web/src/capsweb_frontend/core.cljs [line 16, col 130] Unmatched delimiter ].[0m
+
+  [36m14[0m  [36m(defn ajax-test [vals][0m
+  [36m15[0m  [36m  (go (let [response (<! (http/get (clojure.string/join ""[0m
+  [33m16[0m  [1m                                                        ["/general-js-query?preamble=select-shows&constraint=like-name-" vals]))][0m
+  [0m  [0m  [33m                                                        /home/silver/capsweb-chicken/web/src/capsweb_frontend/core.cljs [line 16, col 130] Unmatched delimiter ].[0m
+  [36m17[0m  [36m        (prn (:status response))[0m
+  [36m18[0m  [36m        (prn (:body response)))))[0m
+
+[36m----  Reader Error : Please see src/capsweb_frontend/core.cljs  ----[0m
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.477 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.405 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[31mFailed to compile "public/js/app.js" in 0.229 seconds.[0m
+[36m----  Could not Read  src/capsweb_frontend/core.cljs   line:27 ----[0m
+
+  [1m/home/silver/capsweb-chicken/web/src/capsweb_frontend/core.cljs [line 27, col 42] The map literal starting with :class on line 26 column 17 contains 5 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m25[0m  [36m       [:p "Change it here: " [atom-input val]][0m
+  [36m26[0m  [36m       [:button {:class "button is-success"[0m
+  [33m27[0m  [1m                 :on-click ajax-test val}[0m
+  [0m  [0m  [33m                 /home/silver/capsweb-chicken/web/src/capsweb_frontend/core.cljs [line 27, col 42] The map literal starting with :class on line 26 column 17 contains 5 form(s). Map literals must contain an even number of forms.[0m
+  [36m28[0m  [36m        "AJAX"]])))[0m
+  [36m29[0m  [36m[0m
+  [36m30[0m  [36m;; -------------------------[0m
+
+[36m----  Reader Error : Please see src/capsweb_frontend/core.cljs  ----[0m
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.404 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.411 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.388 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.391 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.382 seconds.[0m
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.427 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.446 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js

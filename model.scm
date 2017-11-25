@@ -16,40 +16,20 @@
      (head (title ,title-name)
            (link (@ (rel "stylesheet"))
                  (@ (type "text/css"))
-                 (@ (href "css/iziToast.css")))
+                 (@ (href "public/css/iziToast.css")))
            (script
-            (@ (src "js/iziToast.js"))
+            (@ (src "public/js/iziToast.js"))
             (@ (type "text/javascript")))
-           (script (@ (id "template"))
-                   (@ (type "text/x-handlebars-template"))
-                   (@ (src "js/templates/test.templ")))
-           (script
-            (@ (src "js/handlebars-4.js"))
-            (@ (type "text/javascript")))
-           (script
-            (@ (src "js/jquery.js"))
-            (@ (type "text/javascript")))
-           (script
-            (@ (src "js/underscore.js"))
-            (@ (type "text/javascript")))
-           (script
-            (@ (src "js/backbone.js"))
-            (@ (type "text/javascript")))
-           (script
-            (@ (src "js/backbone.radio.js"))
-            (@ (type "text/javascript")))
-           (script
-            (@ (src "js/json2.js"))
-            (@ (type "text/javascript")))
-           (script
-            (@ (src "js/backbone.marionette.js"))
-            (@ (type "text/javascript")))
+           
+           
+           (script (@ (src "public/js/app.js"))
+                   (@ (type "text/javascript")))
            (link (@ (rel "stylesheet"))
                  (@ (type "text/css"))
-                 (@ (href "css/bulma.css")))
+                 (@ (href "public/css/bulma.css")))
            (link (@ (rel "icon"))
                  (@ (type "image/jpg"))
-                 (@ (href "littlec.jpg")))
+                 (@ (href "public/assets/littlec.jpg")))
            (meta (@ (charset "utf-8"))
                  (@ (name "viewport"))
                  (@ (content
@@ -62,7 +42,7 @@
         (div
          (@ (class "container"))
          (h1 (@ (class "title"))
-             (img (@ (src "caps-logo.jpg"))
+             (img (@ (src "public/assets/caps-logo.jpg"))
                   (@ (height "300"))
                   (@ (width "300"))))
          (h2 (@ (class "subtitle"))
@@ -95,8 +75,7 @@
        (a (@ (class "button is-success"))
           (@ (href "/search"))
           "Test")
-       (script (@ (src "/searchbar.js"))
-               (@ (type "text/javascript")))
+
        (nav (@ (id "breadbar"))
             (@ (class "breadcrumb is-centered has-bullet-separator"))
             (@ (aria-label "breadcrumbs"))
