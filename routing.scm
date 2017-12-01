@@ -46,4 +46,4 @@
 (define (send-fof-response)
   (send-status 404 "Spooky!"
 	       "<p>Ghost Doggo is looking for your page.</p>
-<img src='404.jpg'>"))
+<img src='public/assets/404.jpg'>"))

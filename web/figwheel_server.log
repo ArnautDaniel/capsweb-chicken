@@ -386,3 +386,13 @@ notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
 notifying browser that file changed:  public/js/out/goog/deps.js
 notifying browser that file changed:  public/js/out/cljs_deps.js
 notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 0.483 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js
+[0mCompiling "public/js/app.js" from ["src" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "public/js/app.js" in 1.737 seconds.[0m
+notifying browser that file changed:  public/js/out/goog/deps.js
+notifying browser that file changed:  public/js/out/cljs_deps.js
+notifying browser that file changed:  public/js/out/capsweb_frontend/core.js

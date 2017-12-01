@@ -1,0 +1,1 @@
+{:rename-macros {}, :renames {}, :use-macros {}, :excludes #{}, :name capsweb-frontend.dev, :imports nil, :requires {core capsweb-frontend.core, capsweb-frontend.core capsweb-frontend.core, devtools devtools.core, devtools.core devtools.core}, :cljs.spec/speced-vars [], :uses nil, :cljs.spec/registry-ref [], :require-macros nil, :doc nil}
